@@ -33,6 +33,11 @@ on:
         required: true
         default: false
 
+      enable_ygs:
+        type: boolean
+        required: true
+        default: false  
+
       tweak_version:
         type: string
         required: false
@@ -141,7 +146,7 @@ jobs:
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YTABConfig.git
 
       - name: Clone YouGroupSettings
-        if: ${{ inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_demc }}
+        if: ${{ inputs.enable_ygs }}
         run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouGroupSettings.git
 
       - name: Clone YouQuality
@@ -181,7 +186,7 @@ jobs:
           mv packages/*.deb ../ytabc.deb
 
       - name: Build YouGroupSettings
-        if: ${{ inputs.enable_youpip || inputs.enable_ytuhd || inputs.enable_yq || inputs.enable_ryd || inputs.enable_demc }}
+        if: ${{ inputs.enable_ygs }}
         run: |
           cd YouGroupSettings && make clean package DEBUG=0 FINALPACKAGE=1
           mv packages/*.deb ../ygs.deb

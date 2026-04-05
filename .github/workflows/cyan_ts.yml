@@ -51,6 +51,12 @@ on:
         required: true
         default: false
 
+      enable_ygs:
+        description: "Integrate YouGroupSettings"
+        type: boolean
+        required: true
+        default: false
+
       tweak_version:
         description: "The version of the tweak to use. Enter the version manually from dayanch96/YTLite/releases or leave default"
         default: "5.2b4"
@@ -83,6 +89,7 @@ jobs:
       enable_ryd: ${{ inputs.enable_ryd }}
       enable_ytabc: ${{ inputs.enable_ytabc }}
       enable_demc: ${{ inputs.enable_demc }}
+      enable_ygs: ${{ inputs.enable_ygs }}
       tweak_version: ${{ inputs.tweak_version }}
 
   package:
